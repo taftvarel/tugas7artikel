@@ -178,10 +178,12 @@ class MyApp extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 27.0, left: 30.0, right: 16.0, bottom: 10.0),
-                    child: Text(
-                      'ARTIKEL TERBARU',
-                      style: TextStyle(fontSize: 26.0, fontWeight: FontWeight.bold),
+                    padding: const EdgeInsets.only(top: 27.0, left: 16.0, right: 16.0, bottom: 10.0),
+                    child: Center( // Wrap the Text widget in a Center widget
+                      child: Text(
+                        'ARTIKEL TERBARU',
+                        style: TextStyle(fontSize: 26.0, fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                   for (var article in articles)
@@ -190,21 +192,25 @@ class MyApp extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20.0, right: 10.0),
-                            child: Image.asset(
-                              article['image'],
-                              fit: BoxFit.cover,
-                              height: 180,
-                              width: 300,
+                          Center( // Wrap the image in a Center widget
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                              child: Image.asset(
+                                article['image'],
+                                fit: BoxFit.cover,
+                                height: 180,
+                                width: 500,
+                              ),
                             ),
                           ),
                           SizedBox(height: 8.0),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 40.0, left: 10.0),
-                            child: Text(
-                              article['text'],
-                              style: TextStyle(fontSize: 20.0),
+                          Center( // Wrap the text in a Center widget
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 10.0, left: 10.0),
+                              child: Text(
+                                article['text'],
+                                style: TextStyle(fontSize: 20.0),
+                              ),
                             ),
                           ),
                           SizedBox(height: 4.0),
@@ -219,54 +225,42 @@ class MyApp extends StatelessWidget {
                       ),
                     ),
                   // Add two rows of numbers at the bottom right corner with arrows
+                  SizedBox(height: 70.0),
+
                   Padding(
-                    padding: const EdgeInsets.only(top: 20.0, right: 20.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Icon(Icons.arrow_back, size: 24, color: Colors.black),
-                        Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            gradient: LinearGradient(
-                              colors: [Colors.blue, Colors.purple],
+                    padding: const EdgeInsets.only(top: 10.0),
+                    child: Center( // Wrap the row in a Center widget
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center, // Align the row to the center horizontally
+                        children: [
+                          Icon(Icons.arrow_back, size: 26, color: Colors.black),
+                          Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              gradient: LinearGradient(
+                                colors: [Colors.blue, Colors.purple],
+                              ),
+                            ),
+                            child: CircleAvatar(
+                              radius: 15.0,
+                              backgroundColor: Colors.transparent,
+                              child: Text(
+                                '1',
+                                style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold, color: Colors.white),
+                              ),
                             ),
                           ),
-                          child: CircleAvatar(
-                            radius: 15.0,
-                            backgroundColor: Colors.transparent,
-                            child: Text(
-                              '1',
-                              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, color: Colors.white),
+                          for (int i = 2; i <= 10; i++)
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Text(
+                                '$i',
+                                style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold, color: Colors.black),
+                              ),
                             ),
-                          ),
-                        ),
-                        for (int i = 2; i <= 5; i++)
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: Text(
-                              '$i',
-                              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, color: Colors.black),
-                            ),
-                          ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8.0, right: 12.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        for (int i = 6; i <= 10; i++)
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: Text(
-                              '$i',
-                              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, color: Colors.black),
-                            ),
-                          ),
-                        Icon(Icons.arrow_forward, size: 24, color: Colors.black),
-                      ],
+                          Icon(Icons.arrow_forward, size: 26, color: Colors.black),
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(height: 100.0),
@@ -364,24 +358,25 @@ class MyApp extends StatelessWidget {
                           ),
                         ),
                         Container(
-              width: double.infinity,
-              height: 60.0,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Colors.blue, Colors.purple],
-                ),
-              ),
-                          child: Center (
-                          child: Padding(
-                            padding: EdgeInsets.all(8.0), // Adjust the padding as needed
-                            child: Text(
-                              'Copyright 2023 - Inaklug Indonesia Hak Cipta Dilindungi Undang-Undang',
-                              style: TextStyle(
-                                fontSize: 18.0,
-                                color: Colors.white,
-                              ),
+                          width: double.infinity,
+                          height: 60.0,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Colors.blue, Colors.purple],
                             ),
                           ),
+                          child: Center(
+                            child: Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Text(
+                                'Copyright 2023 - Inaklug Indonesia Hak Cipta Dilindungi Undang-Undang',
+                                style: TextStyle(
+                                  fontSize: 18.0,
+                                  color: Colors.white,
+                                ),
+                                textAlign: TextAlign.center, // Align the text to the center
+                              ),
+                            ),
                           ),
                         ),
                       ],
